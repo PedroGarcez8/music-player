@@ -33,38 +33,68 @@ const musics = [
     }
 ]
 
-function getmusic() {
-    musicPlayer.src = musics[0].caminhoDAMusica
-    musicAlbum.src = musics[0].album
-    musicTitle.innerText = musics[0].tituloDaMusica
-    banda.innerText = musics[0].artista
+var musicaAtual= 0
+
+function getmusic(indexMusica) {
+    musicPlayer.src = musics[indexMusica].caminhoDAMusica
+    musicAlbum.src = musics[indexMusica].album
+    musicTitle.innerText = musics[indexMusica].tituloDaMusica
+    banda.innerText = musics[indexMusica].artista
+
+    musicaAtual = indexMusica
 
 
 }
+
+
+getmusic(musicaAtual)
 
 function nextmusic() {
-    musicPlayer.src = musics[1].caminhoDAMusica
-    musicAlbum.src = musics[1].album
-    musicTitle.innerText = musics[1].tituloDaMusica
-    banda.innerText = musics[1].artista
+   getmusic(musicaAtual + 1)
+
+   musicPlayer.play()
 }
 
-getmusic()
+function previousMusic() {
+   getmusic(musicaAtual - 1)
+
+   musicPlayer.play()
+}
+
 
 play.addEventListener("click", function () {
     musicPlayer.play()
+
+    play.style.display = "none"
+    pause.style.display = "flex"
 }
 )
+
 pause.addEventListener("click", function () {
     musicPlayer.pause()
+
+    play.style.display = "flex"
+    pause.style.display = "none"
+}
+)
+
+pause.addEventListener("click", function () {
+    musicPlayer.pause()
+
+    play.style.display = "flex"
+    pause.style.display = "none"
 }
 )
 proxima.addEventListener("click", function () {
     nextmusic()
-     musicPlayer.play()
-}
-anterior.addEventListener("click", function () {
-    previous()
-     
+
 }
 )
+
+anterior.addEventListener("click", function () {
+    previousMusic()
+
+   
+}
+)
+
