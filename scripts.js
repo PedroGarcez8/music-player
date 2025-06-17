@@ -5,6 +5,7 @@ const banda = document.getElementById("banda")
 
 const proxima = document.getElementById("proxima")
 const play = document.getElementById("play")
+const pause = document.getElementById("pause")
 const anterior = document.getElementById("anterior")
 
 const progress = document.getElementById("progress")
@@ -41,9 +42,29 @@ function getmusic() {
 
 }
 
+function nextmusic() {
+    musicPlayer.src = musics[1].caminhoDAMusica
+    musicAlbum.src = musics[1].album
+    musicTitle.innerText = musics[1].tituloDaMusica
+    banda.innerText = musics[1].artista
+}
+
 getmusic()
 
 play.addEventListener("click", function () {
     musicPlayer.play()
+}
+)
+pause.addEventListener("click", function () {
+    musicPlayer.pause()
+}
+)
+proxima.addEventListener("click", function () {
+    nextmusic()
+     musicPlayer.play()
+}
+anterior.addEventListener("click", function () {
+    previous()
+     
 }
 )
